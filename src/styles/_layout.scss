@@ -1,0 +1,33 @@
+.layout {
+  min-height: 100vh;
+  background: #000;
+  .sider {
+    // background: #121212;
+    height: 100%;
+    border-radius: 10px;
+    margin-right: 10px;
+    width: auto;
+    .side-bar-menu {
+      // height: 100vh;
+      height: 100vh;
+      border-radius: 10px;
+      background: #121212;
+      border-right: 1px solid #333;
+      // width: auto;
+      padding: 10px;
+      box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+      // position: fixed;
+    }
+  }
+
+  .home {
+    background: #10161b;
+    height: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    .home-content {
+      background: #10161b;
+      border-radius: 10px;
+    }
+  }
+}
