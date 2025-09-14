@@ -6,12 +6,13 @@ import TopBar from "./components/TopBar";
 import { Routes, Route } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { Layout } from "antd";
+import { customAxios } from "./external/customAxios";
 
 const { Content, Header, Sider } = Layout;
 
 function App() {
   const [count, setCount] = useState(0);
-  console.log(import.meta.env.VITE_API_KEY);
+
   return (
     <Layout className="layout">
       <Sider className="sider">

@@ -1,0 +1,225 @@
+$primary-color: #e50914;
+$secondary-color: #f5c518;
+$text-primary: #ffffff;
+$text-secondary: #b3b3b3;
+$background-dark: #141414;
+$glass-bg: rgba(0, 0, 0, 0.4);
+$glass-border: rgba(255, 255, 255, 0.1);
+
+@mixin transition($properties: all, $duration: 0.5s, $timing: ease-out) {
+  transition: $properties $duration $timing;
+}
+
+@mixin glassmorphism {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.trending-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  .header-bar {
+    @include layout(row, space-between);
+    align-items: center;
+
+    .action-btn {
+      @include layout(row, space-between);
+      align-items: center;
+      gap: 5px;
+
+      .scroll-btn {
+        background-color: #292a2b;
+        color: $light-color;
+        &:disabled {
+          background-color: #1d1d1e;
+          color: #b2b2b2;
+        }
+      }
+    }
+    .header {
+      @include font-props(500, $font-size-4, $light-color);
+    }
+  }
+
+  .type-grid {
+    // display: grid;
+    // grid-template-columns: repeat(auto-fit, minmax(136px, 1fr));
+    // gap: 10px;
+
+    display: flex;
+    gap: 10px;
+    overflow-x: scroll;
+
+    .movie-card {
+      max-width: 146px;
+      padding: 5px;
+      @include transition();
+      //   :hover {
+      //     transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+
+      //     scale: 1.05;
+      //   }
+      &:hover {
+        transform: scale(1.05);
+        z-index: 1000;
+
+        // .movie-poster {
+        //   transform: scale(1.05);
+        // }
+
+        // .expanded-content {
+        //   opacity: 1;
+        //   transform: translateY(0);
+        // }
+      }
+
+      .movie-poster {
+        // position: relative;
+        aspect-ratio: 3/4;
+        overflow: hidden;
+        height: 194px;
+        width: 136px;
+        border-radius: 10px;
+        img {
+          //   height: 194px;
+          //   width: 136px;
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+          @include transition(transform);
+        }
+      }
+      .movie-title {
+        @include font-props(500, $font-size-5, $light-color);
+        white-space: nowrap;
+        max-width: 100%;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+}
+
+.movie-details-card {
+  background-color: #292a2b;
+  max-width: 300px;
+  border-radius: 10px;
+  .poster-section {
+    // // position: relative;
+    // aspect-ratio: 16/9;
+    // overflow: hidden;
+
+    // width: 120px;
+
+    img {
+      border-radius: 10px;
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px;
+      height: 100px;
+
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+  .detail-section {
+    height: 100%;
+    @include font-props(500, $font-size-3, $light-color);
+    border-radius: 10px;
+
+    .movie-details {
+      padding: 10px;
+      @include layout(column);
+      gap: 10px;
+      .title {
+        @include font-props(600, $font-size-4, $light-color);
+      }
+      .desc {
+        @include font-props(500, $font-size-6, $light-color);
+        height: 100%;
+        padding-right: 10px;
+        overflow-x: hidden;
+        // overflow-y: hidden;
+        text-overflow: ellipsis;
+        white-space: normal;
+        word-wrap: none;
+
+        // height: 60%;
+        max-height: 40px;
+        opacity: 60%;
+      }
+
+      .meta-data {
+        .data-block {
+          @include layout(row);
+          align-items: center;
+          gap: 10px;
+          .header {
+            @include font-props(500, $font-size-7, $light-color);
+            opacity: 60%;
+          }
+          .value {
+            text-transform: capitalize;
+            @include font-props(500, $font-size-6, $light-color);
+          }
+        }
+      }
+      .meta {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.875rem;
+        color: $text-secondary;
+        margin-bottom: 0.5rem;
+
+        .separator {
+          &::before {
+            content: "•";
+          }
+        }
+      }
+
+      .genre {
+        font-size: 0.875rem;
+        color: $text-secondary;
+        margin-bottom: 0.5rem;
+      }
+
+      .description {
+        font-size: 0.875rem;
+        color: #e0e0e0;
+        margin-bottom: 0.75rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        line-height: 1.4;
+      }
+
+      .cast,
+      .director {
+        margin-bottom: 0.75rem;
+
+        .label {
+          font-size: 0.75rem;
+          color: $text-secondary;
+          margin-bottom: 0.25rem;
+        }
+
+        .value {
+          font-size: 0.875rem;
+          color: $text-primary;
+        }
+      }
+    }
+  }
+
+  // Movie details
+}
