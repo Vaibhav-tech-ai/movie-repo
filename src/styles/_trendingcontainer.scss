@@ -60,25 +60,8 @@ $glass-border: rgba(255, 255, 255, 0.1);
     .movie-card {
       max-width: 146px;
       padding: 5px;
+      position: relative;
       @include transition();
-      //   :hover {
-      //     transition: cubic-bezier(0.075, 0.82, 0.165, 1);
-
-      //     scale: 1.05;
-      //   }
-      &:hover {
-        transform: scale(1.05);
-        z-index: 1000;
-
-        // .movie-poster {
-        //   transform: scale(1.05);
-        // }
-
-        // .expanded-content {
-        //   opacity: 1;
-        //   transform: translateY(0);
-        // }
-      }
 
       .movie-poster {
         // position: relative;
@@ -96,13 +79,31 @@ $glass-border: rgba(255, 255, 255, 0.1);
           @include transition(transform);
         }
       }
-      .movie-title {
-        @include font-props(500, $font-size-5, $light-color);
-        white-space: nowrap;
-        max-width: 100%;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        text-overflow: ellipsis;
+
+      .rating {
+        .star-icon {
+          background-color: #f5c518;
+        }
+        border-radius: 5px;
+        padding: 2px 5px;
+        @include font-props(500, $font-size-7, $light-color);
+        background-color: rgba(0, 0, 0, 0.8);
+
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        display: flex;
+        gap: 5px;
+        justify-content: center;
+        align-items: center;
+        // width: 20px;
+        // height: 20px;
+        // border-radius: 50%;
+      }
+
+      &:hover {
+        transform: scale(1.05);
+        z-index: 1000;
       }
     }
   }
@@ -142,18 +143,12 @@ $glass-border: rgba(255, 255, 255, 0.1);
         @include font-props(600, $font-size-4, $light-color);
       }
       .desc {
-        @include font-props(500, $font-size-6, $light-color);
-        height: 100%;
-        padding-right: 10px;
-        overflow-x: hidden;
-        // overflow-y: hidden;
+        @include font-props(400, $font-size-6, $light-color);
+        display: -webkit-box; /* Enables the flexible box model */
+        -webkit-line-clamp: 2; /* Specifies the number of lines to display before truncating */
+        -webkit-box-orient: vertical; /* Ensures content flows vertically within the box */
+        overflow: hidden; /* Hides content that overflows the container */
         text-overflow: ellipsis;
-        white-space: normal;
-        word-wrap: none;
-
-        // height: 60%;
-        max-height: 40px;
-        opacity: 60%;
       }
 
       .meta-data {

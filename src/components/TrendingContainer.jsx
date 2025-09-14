@@ -1,14 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useRef, useState } from "react";
 import { getTrending } from "../external/Api";
-import { Button, Popover, Tooltip } from "antd";
+import { Button, Popover, Skeleton, Tooltip } from "antd";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { MovieDetails } from "./MovieDetails";
+import { StarFilled, StarTwoTone } from "@ant-design/icons";
 
 export const TrendingContainer = ({ type, label }) => {
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
-  const { data, isLoading, error } = useQuery({
+  const { data, isLoading, error, isFetching } = useQuery({
     queryKey: [`trending-${type}`, type, "day"],
     queryFn: () => getTrending(type, "day"),
   });
@@ -68,39 +69,49 @@ export const TrendingContainer = ({ type, label }) => {
       </div>
 
       <div className="type-grid" ref={scrollRef} onScroll={checkScrollButtons}>
-        {data?.results.map((res) => (
-          <Popover
-            content={
-              <MovieDetails
-                data={res}
-                poster={`https://image.tmdb.org/t/p/w342${res.backdrop_path}`}
-              />
-            }
-            placement="rightTop" // top, bottom, left, right, etc.
-            mouseEnterDelay={0.5} // delay in seconds
-            mouseLeaveDelay={0.1}
-            styles={{ body: { padding: 0, borderRadius: "12px" } }}
-            arrow={false}
-          >
-            <div
-              popoverTarget="myCustomPopover"
-              className="movie-card"
-              key={res.id}
-            >
-              <div className="movie-poster">
-                <img
-                  src={`https://image.tmdb.org/t/p/w342${res.poster_path}`}
-                />
+        {isFetching
+          ? Array(10)
+              .fill("")
+              .map((_, index) => (
+                <div className="movie-card">
+                  <Skeleton.Node
+                    size="large"
+                    active
+                    style={{ backgroundColor: "#2a2a2a" }}
+                    className="movie-poster"
+                  />
+                </div>
+              ))
+          : data?.results.map((res) => (
+              <Popover
+                content={
+                  <MovieDetails
+                    data={res}
+                    poster={`https://image.tmdb.org/t/p/original${res.backdrop_path}`}
+                  />
+                }
+                placement="rightTop" // top, bottom, left, right, etc.
+                mouseEnterDelay={0.5} // delay in seconds
+                mouseLeaveDelay={0.1}
+                styles={{ body: { padding: 0, borderRadius: "12px" } }}
+                arrow={false}
+              >
+                <div className="movie-card" key={res.id}>
+                  <div className="movie-poster">
+                    <img
+                      src={`https://image.tmdb.org/t/p/w342${res.poster_path}`}
+                    />
+                  </div>
 
-                {/* Badges */}
-                {/* <div className="badge rating">{movie.rating}</div> */}
-                {/* <div className="badge type">{movie.type}</div> */}
-              </div>
+                  <div className="rating">
+                    <StarTwoTone twoToneColor="#f5c518" />
+                    {parseFloat(res.vote_average).toFixed(1)}
+                  </div>
 
-              {/* <p className="movie-title">{res.original_title}</p> */}
-            </div>
-          </Popover>
-        ))}
+                  {/* <p className="movie-title">{res.original_title}</p> */}
+                </div>
+              </Popover>
+            ))}
       </div>
     </div>
   );

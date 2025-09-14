@@ -9,14 +9,16 @@ export const MovieDetails = ({ poster, data, ...props }) => {
       </div>
       <div className="detail-section">
         <div className="movie-details">
-          <span className="title">{data.title}</span>
+          <span className="title">{data.title || data.name}</span>
           <span className="desc">{data.overview}</span>
 
           <div className="meta-data">
             <div className="data-block">
               <span className="header">Date:</span>
               <span className="value">
-                {new Date(data.release_date).toLocaleDateString("en-US", {
+                {new Date(
+                  data.release_date || data.first_air_date
+                ).toLocaleDateString("en-US", {
                   year: "numeric",
                   month: "short",
                   day: "numeric",
