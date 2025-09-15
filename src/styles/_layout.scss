@@ -45,7 +45,180 @@
       flex-direction: column;
       gap: 20px;
     }
+  }
 
- 
+  .search {
+    @include layout(column);
+    gap: 20px;
+    height: calc(100vh - 20px);
+    overflow-y: scroll;
+    background: #10161b;
+    padding: 16px;
+    border-radius: 10px;
+    .search-bar {
+      @include layout(row, space-between);
+      align-items: center;
+      gap: 10px;
+      .search-input {
+        height: 40px;
+        background-color: #20272c;
+        border: none;
+        color: #fff !important;
+
+        ::placeholder {
+          color: #fff !important;
+        }
+        .ant-input-affix-wrapper,
+        .ant-input-affix-wrapper:hover,
+        .ant-input-affix-wrapper-focused,
+        .ant-input {
+          background-color: #20272c !important;
+          color: #fff !important;
+          border: none !important;
+        }
+        .ant-input-prefix {
+          color: #fff !important;
+        }
+      }
+      .select-input {
+        color: #fff !important;
+        height: 40px;
+        .ant-select-selector {
+          background-color: #20272c;
+          color: #fff !important;
+          border: none;
+          ::placeholder {
+            color: #fff !important;
+          }
+        }
+        .ant-select-arrow {
+          color: #fff !important;
+        }
+        .ant-select-selection-item,
+        .ant-select-selection-placeholder {
+          color: #fff !important;
+        }
+      }
+      // dropdown styles handled globally below
+    }
+  }
+}
+
+// Global dropdown styles for the Select popup
+.search-select-dropdown {
+  background-color: #20272c !important;
+  .ant-select-item {
+    color: #fff !important;
+    white-space: nowrap;
+  }
+  .ant-select-item-option-active,
+  .ant-select-item-option-selected {
+    background-color: #2a3136 !important;
+    color: #fff !important;
+  }
+}
+
+// Pagination dark theme
+.pagination-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+.pagination-dark {
+  .ant-pagination-total-text {
+    color: #b3b3b3;
+  }
+  // Simple mode (prev | [input]/total | next)
+  &.ant-pagination-simple {
+    .ant-pagination-prev .ant-pagination-item-link,
+    .ant-pagination-next .ant-pagination-item-link {
+      background-color: #20272c;
+      border-color: #2f363b;
+      color: #e6e6e6;
+    }
+    .ant-pagination-prev:hover .ant-pagination-item-link,
+    .ant-pagination-next:hover .ant-pagination-item-link {
+      border-color: #3b444a;
+      color: #ffffff;
+    }
+    .ant-pagination-simple-pager {
+      color: #cfd3d6;
+      .ant-pagination-slash {
+        color: #8a8f94;
+      }
+      input {
+        background-color: #3b444a;
+        border: 1px solid #6b7780;
+        color: #ffffff;
+        box-shadow: none;
+        &:hover,
+        &:focus {
+          background-color: #454e55;
+          border-color: #8a99a3;
+          color: #ffffff;
+        }
+        &::placeholder {
+          color: #b3b3b3;
+        }
+      }
+    }
+  }
+  .ant-pagination-item {
+    background-color: #20272c;
+    border-color: #2f363b;
+    a {
+      color: #e6e6e6;
+    }
+    &:hover {
+      border-color: #3b444a;
+      a {
+        color: #ffffff;
+      }
+    }
+  }
+  // Make the selected page stand out clearly
+  .ant-pagination-item.ant-pagination-item-active {
+    background-color: #3b444a !important;
+    border-color: #6b7780 !important;
+    a {
+      color: #ffffff !important;
+      font-weight: 600;
+    }
+  }
+  .ant-pagination-item.ant-pagination-item-active:hover {
+    background-color: #454e55 !important;
+    border-color: #8a99a3 !important;
+    a {
+      color: #ffffff !important;
+    }
+  }
+  .ant-pagination-item:focus-visible a,
+  .ant-pagination-item a:focus-visible {
+    color: #ffffff;
+  }
+  .ant-pagination-prev .ant-pagination-item-link,
+  .ant-pagination-next .ant-pagination-item-link {
+    background-color: #20272c;
+    border-color: #2f363b;
+    color: #e6e6e6;
+  }
+  .ant-pagination-prev:hover .ant-pagination-item-link,
+  .ant-pagination-next:hover .ant-pagination-item-link {
+    border-color: #3b444a;
+    color: #ffffff;
+  }
+  .ant-pagination-disabled .ant-pagination-item-link,
+  .ant-pagination-disabled .ant-pagination-item a,
+  .ant-pagination-disabled .ant-pagination-item-link:hover {
+    background-color: #1a2024;
+    border-color: #273037;
+    color: #8a8f94;
+  }
+  .ant-pagination-jump-prev
+    .ant-pagination-item-container
+    .ant-pagination-item-ellipsis,
+  .ant-pagination-jump-next
+    .ant-pagination-item-container
+    .ant-pagination-item-ellipsis {
+    color: #8a8f94;
   }
 }

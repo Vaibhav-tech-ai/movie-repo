@@ -3,10 +3,11 @@ import "@ant-design/v5-patch-for-react-19";
 import "./App.scss";
 import SideBar from "./components/SideBar";
 import TopBar from "./components/TopBar";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { Layout } from "antd";
 import { customAxios } from "./external/customAxios";
+import { Search } from "./pages/Search";
 
 const { Content, Header, Sider } = Layout;
 
@@ -26,7 +27,9 @@ function App() {
         <Content>
           {/*Routes*/}
           <Routes>
+            <Route path="/" element={<Navigate replace to="/home" />} />
             <Route path="/home" element={<Home />} />
+            <Route path="/search" element={<Search />} />
           </Routes>
         </Content>
       </Layout>

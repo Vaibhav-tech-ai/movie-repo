@@ -15,3 +15,21 @@ export const getTrending = async (type, timeWindow) => {
     return res.data;
   } catch (err) {}
 };
+
+export const discoverResults = async (type, { page }) => {
+  try {
+    const res = await customAxios.get(
+      `discover/${type}?page=${page}&include_adult=false`
+    );
+    return res.data;
+  } catch (err) {}
+};
+
+export const getSearchResults = async (type, { query, page }) => {
+  try {
+    const res = await customAxios.get(
+      `search/${type}?query=${query}&page=${page}&include_adult=false&language=en-US`
+    );
+    return res.data;
+  } catch (err) {}
+};

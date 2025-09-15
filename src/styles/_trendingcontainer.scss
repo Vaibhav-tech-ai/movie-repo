@@ -109,6 +109,80 @@ $glass-border: rgba(255, 255, 255, 0.1);
   }
 }
 
+.grid-view {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 10px;
+
+  .movie-card {
+    padding: 5px;
+    position: relative;
+    @include transition();
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .movie-poster {
+      // position: relative;
+      aspect-ratio: 3/4;
+      overflow: hidden;
+      height: 242px;
+      width: 170px;
+      border-radius: 10px;
+      img {
+        //   height: 194px;
+        //   width: 136px;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        @include transition(transform);
+      }
+    }
+
+    .rating {
+      .star-icon {
+        background-color: #f5c518;
+      }
+      border-radius: 5px;
+      padding: 2px 5px;
+      @include font-props(500, $font-size-7, $light-color);
+      background-color: rgba(0, 0, 0, 0.8);
+
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      display: flex;
+      gap: 5px;
+      justify-content: center;
+      align-items: center;
+      // width: 20px;
+      // height: 20px;
+      // border-radius: 50%;
+    }
+    .details {
+      .meta-data {
+        display: flex;
+        justify-content: space-between;
+        @include font-props(500, $font-size-6, $light-color);
+        opacity: 80%;
+
+        .type {
+          text-transform: uppercase;
+        }
+      }
+      .title {
+        @include font-props(600, $font-size-5, $light-color);
+      }
+    }
+
+    &:hover {
+      transform: scale(1.05);
+      z-index: 1000;
+    }
+  }
+}
+
 .movie-details-card {
   background-color: #292a2b;
   max-width: 300px;
