@@ -7,6 +7,7 @@ import {
   SettingOutlined,
 } from "@ant-design/icons";
 import { Menu, Switch, Layout } from "antd";
+import { useNavigate } from "react-router-dom";
 
 const items = [
   {
@@ -33,10 +34,16 @@ const items = [
 ];
 
 const SideBar = () => {
+  const currPage =
+    window.location.pathname.split("/")[
+      window.location.pathname.split("/").length - 1
+    ];
   const [current, setCurrent] = useState("home");
   const [collapsed, setCollapsed] = useState(false);
+  const navigate = useNavigate();
   const onClick = ({ key }) => {
-    setCurrent(key);
+    // setCurrent(key);
+    navigate(key);
   };
   const onCollapse = (collapsed) => {
     setCollapsed(collapsed);
@@ -48,7 +55,7 @@ const SideBar = () => {
       className="side-bar-menu"
       onClick={onClick}
       // style={{ width: 256 }}
-      selectedKeys={[current]}
+      selectedKeys={[currPage]}
       mode="inline"
       items={items}
     />
