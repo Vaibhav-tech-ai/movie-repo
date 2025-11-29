@@ -52,11 +52,13 @@ const SideBar = () => {
   return (
     <Menu
       theme={"dark"}
+      
       className="side-bar-menu"
       onClick={onClick}
       // style={{ width: 256 }}
       selectedKeys={[currPage]}
       mode="inline"
+      
       items={items}
     />
   );

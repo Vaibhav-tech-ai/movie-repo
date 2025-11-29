@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { SearchBar } from "../components/SearchBar";
-import { DisplayContainer } from "../components/DisplayContainer";
+import { SearchBar } from "../components/search/SearchBar";
+import { DisplayContainer } from "../components/home/DisplayContainer";
 
 export const Search = () => {
   const [searchQuery, setSearchQuery] = useState("");

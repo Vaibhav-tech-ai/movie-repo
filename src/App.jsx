@@ -1,8 +1,8 @@
 import { useState } from "react";
 import "@ant-design/v5-patch-for-react-19";
 import "./App.scss";
-import SideBar from "./components/SideBar";
-import TopBar from "./components/TopBar";
+import SideBar from "./components/utils/SideBar";
+import TopBar from "./components/utils/TopBar";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { Layout } from "antd";

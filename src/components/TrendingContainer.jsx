@@ -3,7 +3,7 @@ import React, { useRef, useState } from "react";
 import { getTrending } from "../external/Api";
 import { Button, Popover, Skeleton, Tooltip } from "antd";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { MovieDetails } from "./MovieDetails";
+import { MovieDetails } from "./utils/MovieDetails";
 import { StarFilled, StarTwoTone } from "@ant-design/icons";
 
 export const TrendingContainer = ({ type, label }) => {

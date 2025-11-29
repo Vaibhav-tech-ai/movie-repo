@@ -1,7 +1,11 @@
+import { PlayCircleOutlined } from "@ant-design/icons";
+import { Button } from "antd";
 import dayjs from "dayjs";
-import React from "react";
+import React, { useState } from "react";
+import { TrailerModal } from "./TrailerModal";
 
 export const MovieDetails = ({ poster, data, ...props }) => {
+  const [isTrailerModal, setIsTrailer] = useState(false);
   return (
     <div {...props} className="movie-details-card">
       <div className="poster-section">
@@ -35,24 +39,25 @@ export const MovieDetails = ({ poster, data, ...props }) => {
             </div>
           </div>
 
-          {/* <div className="meta">
-            <span>{dayjs(data.year).format("YYYY")}</span>
-            <span className="separator"></span>
-            <span>{data.overview}</span>
-          </div> */}
-          {/* 
-            <p className="genre">{movie.genre}</p>
-            <p className="description">{movie.description}</p>
+          <div className="action-buttons">
+            <Button
+              className="trailer-btn"
+              onClick={() => setIsTrailer(true)}
+              icon={<PlayCircleOutlined />}
+            >
+              Watch Trailer
+            </Button>{" "}
+          </div>
 
-            <div className="cast">
-              <p className="label">Cast:</p>
-              <p className="value">{movie.cast.join(", ")}</p>
-            </div> */}
-
-          {/* <div className="director">
-            <p className="label">Director:</p>
-            <p className="value">{data.title}</p>
-          </div> */}
+          {isTrailerModal && (
+            <TrailerModal
+              title={data.title || data.name}
+              dataId={data.id}
+              dataType={data.media_type || "movie"}
+              isOpen={isTrailerModal}
+              onClose={() => setIsTrailer(false)}
+            />
+          )}
         </div>
       </div>
     </div>

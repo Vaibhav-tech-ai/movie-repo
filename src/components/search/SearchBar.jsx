@@ -77,7 +77,7 @@ export const SearchBar = ({
         className="select-input"
         options={menuItems}
         value={selectedType}
-        style={{ width: "20%" }}
+        // style={{ width: "100%" }}
         onChange={(value) => setSelectedType(value)}
         classNames={{ popup: { root: "search-select-dropdown" } }}
         popupMatchSelectWidth={false}

@@ -4,12 +4,12 @@ import {
   discoverResults,
   getSearchResults,
   getTrending,
-} from "../external/Api";
+} from "../../external/Api";
 import { Popover, Skeleton } from "antd";
-import { MovieDetails } from "./MovieDetails";
+import { MovieDetails } from "../utils/MovieDetails";
 import { StarTwoTone } from "@ant-design/icons";
 import dayjs from "dayjs";
-import { PaginationComp } from "./Pagination";
+import { PaginationComp } from "../utils/Pagination";
 export const DisplayContainer = ({ type, searchQuery }) => {
   const [page, setPage] = useState(1);
 
@@ -66,7 +66,11 @@ export const DisplayContainer = ({ type, searchQuery }) => {
                   <Skeleton.Node
                     size="large"
                     active
-                    style={{ backgroundColor: "#2a2a2a" }}
+                    style={{
+                      backgroundColor: "#2a2a2a",
+                      height: "100%",
+                      width: "100%",
+                    }}
                     className="movie-poster"
                   />
                 </div>

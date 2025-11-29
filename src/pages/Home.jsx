@@ -1,5 +1,5 @@
 import React from "react";
-import TopBar from "../components/TopBar";
+import TopBar from "../components/utils/TopBar";
 import { useQuery } from "@tanstack/react-query";
 import { getMovies, getTrending } from "../external/Api";
 import { TrendingContainer } from "../components/TrendingContainer";

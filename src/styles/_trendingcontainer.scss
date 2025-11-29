@@ -1,5 +1,3 @@
-$primary-color: #e50914;
-$secondary-color: #f5c518;
 $text-primary: #ffffff;
 $text-secondary: #b3b3b3;
 $background-dark: #141414;
@@ -127,8 +125,6 @@ $glass-border: rgba(255, 255, 255, 0.1);
       // position: relative;
       aspect-ratio: 3/4;
       overflow: hidden;
-      height: 242px;
-      width: 170px;
       border-radius: 10px;
       img {
         //   height: 194px;
@@ -238,6 +234,11 @@ $glass-border: rgba(255, 255, 255, 0.1);
             text-transform: capitalize;
             @include font-props(500, $font-size-6, $light-color);
           }
+        }
+      }
+      .action-buttons{
+        .trailer-btn{
+          @include font-props(500, $font-size-6, $secondary-color);
         }
       }
       .meta {
